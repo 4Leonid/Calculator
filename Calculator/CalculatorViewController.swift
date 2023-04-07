@@ -10,7 +10,7 @@ import SwiftUI
 import SnapKit
 
 class CalculatorViewController: UIViewController {
-  
+  //  MARK: - Private Properties
   private lazy var mainStack: UIStackView = {
     let element = UIStackView()
     element.axis = .vertical
@@ -248,6 +248,7 @@ class CalculatorViewController: UIViewController {
     return element
   }()
 
+  //  MARK: - Override Methods
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .black
@@ -308,6 +309,7 @@ extension CalculatorViewController {
   }
 }
 
+//  MARK: - Show Canvas
 struct ContentViewController: UIViewControllerRepresentable {
   
   typealias UIViewControllerType = CalculatorViewController
