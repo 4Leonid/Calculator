@@ -22,7 +22,7 @@ class CalculatorViewController: UIViewController {
   private lazy var firstStack: UIStackView = {
     let element = UIStackView()
     element.axis = .horizontal
-    element.distribution = .fillEqually
+    element.distribution = .fill
     element.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
     element.spacing = 1
     return element
@@ -65,6 +65,12 @@ class CalculatorViewController: UIViewController {
     element.axis = .horizontal
     element.distribution = .fill
     element.spacing = 2
+    return element
+  }()
+  
+  private lazy var labelView: UIView = {
+    let element = UIView()
+    element.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
     return element
   }()
   
@@ -248,7 +254,7 @@ class CalculatorViewController: UIViewController {
     return element
   }()
 
-  //  MARK: - Override Methods
+//  MARK: - Override Methods
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .black
@@ -261,14 +267,15 @@ class CalculatorViewController: UIViewController {
 extension CalculatorViewController {
   private func addViews() {
     view.addSubview(mainStack)
-    mainStack.addArrangedSubview(firstStack)
+    mainStack.addArrangedSubview(labelView)
     mainStack.addArrangedSubview(secondStack)
     mainStack.addArrangedSubview(thirdStack)
     mainStack.addArrangedSubview(fouthStack)
     mainStack.addArrangedSubview(fifthStack)
     mainStack.addArrangedSubview(sixthStack)
     
-    firstStack.addArrangedSubview(label)
+    labelView.addSubview(label)
+    
     secondStack.addArrangedSubview(percentButton)
     secondStack.addArrangedSubview(plusMinusButton)
     secondStack.addArrangedSubview(acButton)
@@ -297,6 +304,11 @@ extension CalculatorViewController {
   private func setConstraints() {
     mainStack.snp.makeConstraints { make in
       make.edges.equalToSuperview()
+    }
+    
+    label.snp.makeConstraints { make in
+      make.trailing.equalTo(labelView.snp.trailing).inset(10)
+      make.centerY.equalTo(labelView.snp.centerY)
     }
     
     pointButton.snp.makeConstraints { make in
