@@ -23,6 +23,7 @@ class CalculatorViewController: UIViewController {
     let element = UIStackView()
     element.axis = .horizontal
     element.distribution = .fillEqually
+    element.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
     element.spacing = 1
     return element
   }()
